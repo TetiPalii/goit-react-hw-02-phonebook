@@ -59,7 +59,7 @@ export class App extends Component {
           <SearchContact onChangeFilter={this.onChangeFilter} />
           {this.state.contacts.length ? (
             <ContactList
-              VisibleContacts={this.state.contacts}
+              VisibleContacts={filteredContacts}
               onDeleteBtn={this.getVisibleContacts}
             />
           ) : (
