@@ -20,7 +20,11 @@ export class App extends Component {
 
   handleSubmit = contactItem => {
     const { name } = contactItem;
-    if (this.state.contacts.some(contact => contact.name === name)) {
+    if (
+      this.state.contacts.some(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       Notiflix.Report.warning('Warning', `${name} is already in contacts.`);
     } else {
       this.setState(({ contacts }) => ({
@@ -51,7 +55,7 @@ export class App extends Component {
     const filteredContacts = this.getFilterContact();
     console.log(filteredContacts);
     return (
-      <div id="root" className={css.container}>
+      <div className={css.container}>
         <Section title={'Phonebook'}>
           <ContactForm handleSubmit={this.handleSubmit} />
         </Section>
